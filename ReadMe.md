@@ -42,7 +42,7 @@ Qt5.0 版本以上
 
 数据层，表示最基本的数据（二维数组）
 
-### 逻辑层-->MyAlgorism类
+### 逻辑层-->MyAlgorithm类
 
 逻辑层，对下层的数据层MyData类进行处理，并将处理的结果返回给上层PaintWidget类
 
