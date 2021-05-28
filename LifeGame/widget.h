@@ -2,7 +2,7 @@
 #define WIDGET_H
 
 #include <QWidget>
-#include "myalgorism.h"
+#include "myalgorithm.h"
 #include "paintwidget.h"
 
 QT_BEGIN_NAMESPACE

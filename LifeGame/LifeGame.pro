@@ -17,13 +17,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
-    myalgorism.cpp \
+    myalgorithm.cpp \
     mydata.cpp \
     paintwidget.cpp \
     widget.cpp
 
 HEADERS += \
-    myalgorism.h \
+    myalgorithm.h \
     mydata.h \
     paintwidget.h \
     widget.h

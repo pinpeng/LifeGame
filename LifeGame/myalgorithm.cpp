@@ -1,7 +1,7 @@
-#include "myalgorism.h"
+#include "myalgorithm.h"
 #include <ctime>
 
-void MyAlgorism::randomCell(int numCount)
+void MyAlgorithm::randomCell(int numCount)
 {
     srand(time(0));
     int lineCount = data[flag]->getLineCount();
@@ -14,7 +14,7 @@ void MyAlgorism::randomCell(int numCount)
     }
 }
 
-int MyAlgorism::getRoundCount(int x, int y)
+int MyAlgorithm::getRoundCount(int x, int y)
 {
     int ans = 0;
     for(int i=x-1;i<=x+1;++i){
@@ -27,7 +27,7 @@ int MyAlgorism::getRoundCount(int x, int y)
     return ans-(data[flag]->isLive(x,y)?1:0);
 }
 
-bool MyAlgorism::judgeCellLive(int x,int y,int count)
+bool MyAlgorithm::judgeCellLive(int x,int y,int count)
 {
     if(count<2) return false;
     if(count>3) return false;
@@ -36,12 +36,12 @@ bool MyAlgorism::judgeCellLive(int x,int y,int count)
     return data[flag]->isLive(x,y);
 }
 
-void MyAlgorism::switchFlag()
+void MyAlgorithm::switchFlag()
 {
     flag ^= 1;
 }
 
-MyAlgorism::MyAlgorism(int lineCount, int columnCount,int cellCount,double cellWidth,double cellHeight)
+MyAlgorithm::MyAlgorithm(int lineCount, int columnCount,int cellCount,double cellWidth,double cellHeight)
     :data(2,nullptr),flag(false),cellWidth(cellWidth),cellHeight(cellHeight)
 {
     data[0] = new MyData(lineCount,columnCount);
@@ -50,7 +50,7 @@ MyAlgorism::MyAlgorism(int lineCount, int columnCount,int cellCount,double cellW
     randomCell(cellCount);
 }
 
-MyAlgorism::~MyAlgorism()
+MyAlgorithm::~MyAlgorithm()
 {
     if(data[0]){
         delete data[0];
@@ -62,7 +62,7 @@ MyAlgorism::~MyAlgorism()
     }
 }
 
-void MyAlgorism::updateMyData()
+void MyAlgorithm::updateMyData()
 {
     for(int i=0;i<data[flag]->getLineCount();++i){
         for(int j=0;j<data[flag]->getColumnCount();++j){
@@ -76,27 +76,27 @@ void MyAlgorism::updateMyData()
     switchFlag();
 }
 
-int MyAlgorism::getColumnCount()
+int MyAlgorithm::getColumnCount()
 {
     return data[flag]->getColumnCount();
 }
 
-int MyAlgorism::getLineCount()
+int MyAlgorithm::getLineCount()
 {
     return data[flag]->getLineCount();
 }
 
-const MyData &MyAlgorism::getData() const
+const MyData &MyAlgorithm::getData() const
 {
     return *(data[flag]);
 }
 
-double MyAlgorism::getCellWidth() const
+double MyAlgorithm::getCellWidth() const
 {
     return cellWidth;
 }
 
-double MyAlgorism::getCellHeight() const
+double MyAlgorithm::getCellHeight() const
 {
     return cellHeight;
 }

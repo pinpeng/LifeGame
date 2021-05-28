@@ -4,7 +4,7 @@
 #include <QWidget>
 #include <QPen>
 #include <QTimer>
-#include "myalgorism.h"
+#include "myalgorithm.h"
 
 namespace Ui {
 class PaintWidget;
@@ -23,7 +23,7 @@ private:
     QBrush cellBrush;
     QPen linePen;
 
-    MyAlgorism *algorism;
+    MyAlgorithm *algorithm;
     QTimer timer;
     Ui::PaintWidget *ui;
 private:

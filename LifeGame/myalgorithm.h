@@ -3,7 +3,7 @@
 
 #include "mydata.h"
 
-class MyAlgorism
+class MyAlgorithm
 {
 private:
     QVector<MyData*> data;
@@ -15,8 +15,8 @@ private:
     bool judgeCellLive(int x,int y,int count);
     void switchFlag();
 public:
-    MyAlgorism(int lineCount,int columnCount,int cellCount,double cellWidth,double cellHeight);
-    ~MyAlgorism();
+    MyAlgorithm(int lineCount,int columnCount,int cellCount,double cellWidth,double cellHeight);
+    ~MyAlgorithm();
 
     void updateMyData();
     int getLineCount();

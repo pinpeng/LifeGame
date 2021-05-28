@@ -36,9 +36,9 @@ void PaintWidget::setDeltaTime(int speed)
 
 void PaintWidget::onStartClicked()
 {
-    if(algorism) delete algorism;
+    if(algorithm) delete algorithm;
 
-    algorism = new MyAlgorism(lineCount,columnCount,cellCount,cubeWidth,cubeHeight);
+    algorithm = new MyAlgorithm(lineCount,columnCount,cellCount,cubeWidth,cubeHeight);
 
     setState(IS_START);
     repaint();
@@ -57,7 +57,7 @@ void PaintWidget::onPauseClicked()
 void PaintWidget::onNextTurnClicked()
 {
     setState(IS_PAUSE);
-    algorism->updateMyData();
+    algorithm->updateMyData();
 
     repaint();
 }
@@ -65,8 +65,8 @@ void PaintWidget::onNextTurnClicked()
 void PaintWidget::onClearClicked()
 {
     setState(IS_INIT);
-    if(algorism) delete algorism;
-    algorism = nullptr;
+    if(algorithm) delete algorithm;
+    algorithm = nullptr;
 
     repaint();
 }
@@ -124,11 +124,11 @@ void PaintWidget::paintInitLines(QPainter &painter)
 
 void PaintWidget::paintStartLines(QPainter &painter)
 {
-    for(int i=0;i<algorism->getLineCount();++i)
-        painter.drawLine(0,i*algorism->getCellHeight(),rect().right(),i*algorism->getCellHeight());
+    for(int i=0;i<algorithm->getLineCount();++i)
+        painter.drawLine(0,i*algorithm->getCellHeight(),rect().right(),i*algorithm->getCellHeight());
 
-    for(int i=0;i<algorism->getColumnCount();++i)
-        painter.drawLine(i*algorism->getCellWidth(),0,i*algorism->getCellWidth(),rect().bottom());
+    for(int i=0;i<algorithm->getColumnCount();++i)
+        painter.drawLine(i*algorithm->getCellWidth(),0,i*algorithm->getCellWidth(),rect().bottom());
 
     painter.drawLine(0,rect().bottom(),rect().right(),rect().bottom());
     painter.drawLine(rect().right(),0,rect().right(),rect().bottom());
@@ -137,11 +137,11 @@ void PaintWidget::paintStartLines(QPainter &painter)
 void PaintWidget::paintCube(QPainter &painter)
 {
     if(isStart!=IS_INIT){
-        for(int i=0;i<algorism->getLineCount();++i){
-            for(int j=0;j<algorism->getColumnCount();++j){
-                if(algorism->getData().isLive(i,j)){
-                    painter.fillRect(j*algorism->getCellWidth(),i*algorism->getCellHeight()+1,
-                                     algorism->getCellWidth(),algorism->getCellHeight(),
+        for(int i=0;i<algorithm->getLineCount();++i){
+            for(int j=0;j<algorithm->getColumnCount();++j){
+                if(algorithm->getData().isLive(i,j)){
+                    painter.fillRect(j*algorithm->getCellWidth(),i*algorithm->getCellHeight()+1,
+                                     algorithm->getCellWidth(),algorithm->getCellHeight(),
                                      cellBrush);
                 }
             }
@@ -167,7 +167,7 @@ PaintWidget::PaintWidget(QWidget *parent) :
     bkgdBrush(Qt::white),
     cellBrush(Qt::yellow),
     linePen(Qt::black),
-    algorism(nullptr),
+    algorithm(nullptr),
     timer(this),
     ui(new Ui::PaintWidget)
 {
@@ -185,7 +185,7 @@ void PaintWidget::onTimeOut()
 {
 //    printSettings();
     if(getState() == IS_START){
-        algorism->updateMyData();
+        algorithm->updateMyData();
     }
     repaint();
 }
